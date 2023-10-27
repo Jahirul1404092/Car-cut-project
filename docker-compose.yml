@@ -1,0 +1,24 @@
+version: '3'
+services:
+  carcut_process_server:
+    # image: gcr.io/carimageimprovement/process_server:latest
+    image: ghcr.io/chowagiken/carcut_process_server:v1.3
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    runtime: nvidia
+    shm_size: '150gb'
+    restart: unless-stopped
+    environment:
+      #For Infintieloop Test server(By Chowagiken)
+#       - API_SERVER_IP=http://23.251.144.224:5004
+#       - API_UNPROCESSED_PATH=/api/ai/exterior
+#       - API_PROCESSED_PATH=/api/ai/exterior
+      # For InfiniteLoop Production Server
+      - API_SERVER_IP=https://cartoru.net/
+      - API_UNPROCESSED_PATH=/api/ai/exterior
+      - API_PROCESSED_PATH=/api/ai/exterior
+      - API_KEY=CHOWAGIKEN
+      - GPU=true

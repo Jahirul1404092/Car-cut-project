@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% with var_a = {'addZip': 'active', 'addImage': ''} %}
+{% include "menu_main.html" %}
+{% endwith %}
+
+{% include 'add_zip_options.html' %}
+
+
+
+{% endblock %}
